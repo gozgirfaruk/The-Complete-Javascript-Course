@@ -57,3 +57,72 @@ console.log(rest2);
 
 for (const item of restaurant.categories.entries())
   console.log(item);
+
+const properties = Object.keys(openingHours);
+for(const item of properties){
+  console.log(item)
+}
+
+// ------------------------------------
+// SETS FUNDAMENTALS
+
+const orderSet = new Set([
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+  'Cake',
+  'Pizza',
+  'Pasta'
+]);
+console.log(orderSet)
+console.log(new Set('Faruk'));
+console.log(orderSet.size);
+console.log(orderSet.has('Pizza'));
+console.log(orderSet.has('Bread'));
+orderSet.add('Bread');
+orderSet.delete('Risotto');
+console.log(orderSet);
+
+
+const italianFoods = new Set([
+  'pasta',
+  'gnocchi',
+  'tomatoes',
+  'olive oil',
+  'garlic',
+  'basil',
+]);
+
+const mexicanFoods = new Set([
+  'tortillas',
+  'beans',
+  'rice',
+  'tomatoes',
+  'avocado',
+  'garlic',
+]);
+
+const commonFoods = italianFoods.intersection(mexicanFoods);
+console.log('Intersection:', commonFoods);
+console.log([...commonFoods]);
+
+const italianMexicanFusion = italianFoods.union(mexicanFoods);
+console.log('Union:', italianMexicanFusion);
+
+console.log([...new Set([...italianFoods, ...mexicanFoods])]);
+
+const uniqueItalianFoods = italianFoods.difference(mexicanFoods);
+console.log('Difference italian', uniqueItalianFoods);
+
+const uniqueMexicanFoods = mexicanFoods.difference(italianFoods);
+console.log('Difference mexican', uniqueMexicanFoods);
+
+const uniqueItalianAndMexicanFoods =
+  italianFoods.symmetricDifference(mexicanFoods);
+console.log(uniqueItalianAndMexicanFoods);
+
+console.log(italianFoods.isDisjointFrom(mexicanFoods));
+
+
+
