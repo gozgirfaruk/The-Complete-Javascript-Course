@@ -27,3 +27,12 @@ const great = function(greeting){
 const greatHey = great('Hey');
 greatHey('Omar');
 great('Hello')('Faruk');
+
+(function () {
+    const header = document.querySelector('h1');
+    header.style.color = 'red';
+  
+    document.querySelector('body').addEventListener('click', function () {
+      header.style.color = 'blue';
+    });
+  })();
