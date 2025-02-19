@@ -1,99 +1,142 @@
 'use strict'
 
 //  // FOR OF
-//  const movements= [300,-100,150,200,600,-650];
+ const movements= [300,-100,150,200,600,-650];
 
-//  for(const movement of movements){
-//    if(movement>0){
-//        console.log(`You deposite ${movement}`);
-//    }else{
-//        console.log(`You withdrew ${movement}`);
-//    }
-//  };
+ for(const movement of movements){
+   if(movement>0){
+       console.log(`You deposite ${movement}`);
+   }else{
+       console.log(`You withdrew ${movement}`);
+   }
+ };
 
 
 //  console.log(`---------------------0----------------------------`);
  
 //  //FOREACH
-//  movements.forEach(function(movement){
-//    if(movement>0){
-//        console.log(`You deposite with Foreach ${movement}`);
-//    }else{
-//        console.log(`You withdrew with Foreach ${movement}`);
-//    }
-//  });
+ movements.forEach(function(movement){
+   if(movement>0){
+       console.log(`You deposite with Foreach ${movement}`);
+   }else{
+       console.log(`You withdrew with Foreach ${movement}`);
+   }
+ });
 
 
-//  const currencies = new Map(
-//     [
-//         ['USD','United States dollar'],
-//         ['EUR','Euro'],
-//         ['GBP','Pound sterling'],
-//         ['TL','Turkish Lira']
-//     ]
-// );
+ const currencies = new Map(
+    [
+        ['USD','United States dollar'],
+        ['EUR','Euro'],
+        ['GBP','Pound sterling'],
+        ['TL','Turkish Lira']
+    ]
+);
 
-// currencies.forEach(function(value,key,map){
-//     console.log(`${key}:${value}`);
-// });
+currencies.forEach(function(value,key,map){
+    console.log(`${key}:${value}`);
+});
 
-const account1 = {
-    owner: 'Jonas Schmedtmann',
-    movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
-    interestRate: 1.2, // %
-    pin: 1111,
-    type: 'premium',
-  };
+
+/////////////////////////////////////
+
+ for(const movement of movements){
+   if(movement>0){
+       console.log(`You deposite ${movement}`);
+   }else{
+       console.log(`You withdrew ${movement}`);
+   }
+ };
+
+//  console.log(`---------------------0----------------------------`);
+ 
+ //FOREACH
+ movements.forEach(function(movement){
+   if(movement>0){
+       console.log(`You deposite with Foreach ${movement}`);
+   }else{
+       console.log(`You withdrew with Foreach ${movement}`);
+   }
+ });
+
+currencies.forEach(function(value,key,map){
+    console.log(`${key}:${value}`);
+});
+
+
+
+const checkDogs = function (dogsJulia, dogsKate) {
+    const dogsJuliaCorrected = dogsJulia.slice();
+    dogsJuliaCorrected.splice(0, 1);
+    dogsJuliaCorrected.splice(-2);
+    // dogsJulia.slice(1, 3);
+    const dogs = dogsJuliaCorrected.concat(dogsKate);
+    console.log(dogs);
   
-  const account2 = {
-    owner: 'Jessica Davis',
-    movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
-    interestRate: 1.5,
-    pin: 2222,
-    type: 'standard',
+    dogs.forEach(function (dog, i) {
+      if (dog >= 3) {
+        console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old`);
+      } else {
+        console.log(`Dog number ${i + 1} is still a puppy 🐶`);
+      }
+    });
   };
+  // checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+  checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
   
-  const account3 = {
-    owner: 'Steven Thomas Williams',
-    movements: [200, -200, 340, -300, -20, 50, 400, -460],
-    interestRate: 0.7,
-    pin: 3333,
-    type: 'premium',
+  const euroToUsd = 1.1;
+  
+  //const movements= [300,-100,150,200,600,-650];
+  // First away
+  const movementUSD= movements.map(function(mov){
+    return mov * euroToUsd;
+  });
+  console.log(movementUSD);
+  // Second away
+  const movementUSDfor=[];
+  for(const mov of movements){
+    movementUSDfor.push(mov*euroToUsd);
   };
+  console.log(movementUSDfor);
   
-  const account4 = {
-    owner: 'Sarah Smith',
-    movements: [430, 1000, 700, 50, 90],
-    interestRate: 1,
-    pin: 4444,
-    type: 'basic',
-  };
+  const movementUSDarrow= movements.map(mov=>mov*euroToUsd);
+  console.log(movementUSDarrow);
   
-  const accounts = [account1, account2, account3, account4];
-
-const labelWelcome = document.querySelector('.welcome');
-const labelDate = document.querySelector('.date');
-const labelBalance = document.querySelector('.balance__value');
-const labelSumIn = document.querySelector('.summary__value--in');
-const labelSumOut = document.querySelector('.summary__value--out');
-const labelSumInterest = document.querySelector('.summary__value--interest');
-const labelTimer = document.querySelector('.timer');
-
-const containerApp = document.querySelector('.app');
-const containerMovements = document.querySelector('.movements');
-
-const btnLogin = document.querySelector('.login__btn');
-const btnTransfer = document.querySelector('.form__btn--transfer');
-const btnLoan = document.querySelector('.form__btn--loan');
-const btnClose = document.querySelector('.form__btn--close');
-const btnSort = document.querySelector('.btn--sort');
-
-const inputLoginUsername = document.querySelector('.login__input--user');
-const inputLoginPin = document.querySelector('.login__input--pin');
-const inputTransferTo = document.querySelector('.form__input--to');
-const inputTransferAmount = document.querySelector('.form__input--amount');
-const inputLoanAmount = document.querySelector('.form__input--loan-amount');
-const inputCloseUsername = document.querySelector('.form__input--user');
-const inputClosePin = document.querySelector('.form__input--pin');
+  const movementsDescriptions = movements.map(
+    (mov, i) =>
+      `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+        mov
+      )}`
+  );
+  console.log(movementsDescriptions);
 
 
+ const deposits= movements.filter(function(mov){
+    return mov>0;
+  });
+  console.log(movements);
+  console.log(deposits);
+  
+  const withdrewals= movements.filter(mov=>mov<0);
+  console.log(withdrewals);
+
+  const reduceFunc = movements.reduce(function(x,total){
+   if(x>0){
+    total+=x;
+   }else{
+    total-=x;
+   }
+   return total;
+  });
+  console.log(reduceFunc);
+  
+  // const movements= [300,-100,150,200,600,-650];
+  // Maximum value
+  const max = movements.reduce((acc,mov)=>{
+    if(acc>mov){
+        return acc;
+    }else{
+        return mov
+    }
+  },movements[0]);
+  console.log(max);
