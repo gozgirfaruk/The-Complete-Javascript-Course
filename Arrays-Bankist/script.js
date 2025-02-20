@@ -140,3 +140,41 @@ const checkDogs = function (dogsJulia, dogsKate) {
     }
   },movements[0]);
   console.log(max);
+
+  const totalDepositsUSD=movements
+  .filter(mov=>mov>0)
+  .map(mov=>mov*euroToUsd)
+  .reduce((acc,mov)=>acc+mov,0);
+ console.log(totalDepositsUSD);
+
+ 
+ const firstWithdrawal= movements.find(mov =>mov <0);
+ console.log(movements);
+ console.log(firstWithdrawal);
+
+ const person1= {
+  name : 'ABC',
+  surname:'D',
+  id:1211,
+  pin:[15,17,19,21,23]
+ };
+ const person2= {
+  name : 'OFG',
+  surname:'0007BOND',
+  id:1211,
+  pin:[15,17,19,21,23]
+ };
+ const person3= {
+  name : 'QWERT',
+  surname:'TYU',
+  id:1211,
+  pin:[15,17,19,21,23]
+ };
+
+const persons = [person1,person2,person3];
+
+console.log(persons);
+const person = persons.find(acc => acc.name==='OFG');
+console.log(person);
+
+ 
