@@ -177,4 +177,11 @@ console.log(persons);
 const person = persons.find(acc => acc.name==='OFG');
 console.log(person);
 
+ const arr = [[1,2,3],[4,5,6],[7,8,9],0];
+ console.log(arr.flat());
+
+ const arrdeep = [[1,2,3],[4,5,6],[[7,8],9],0];
+ console.log(arr.flatMap(mov=>mov));
+ console.log(arr.flat(2));
+ 
  
