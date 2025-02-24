@@ -184,4 +184,29 @@ console.log(person);
  console.log(arr.flatMap(mov=>mov));
  console.log(arr.flat(2));
  
- 
+ const owners =['Jonas','Jack','Adam','Martha'];
+ console.log(owners.sort());
+ console.log(owners);
+
+
+ // Sort ana dizinin üzerine uygulandığı zaman köklü değiliklik yapar
+ console.log(movements.sort());
+console.log(movements);
+// Slice ile görüntüsünü alıp görüntü üzerinde sıralama yapabiliriz.
+
+console.log(movements.slice().reverse());
+
+console.log(movements);
+
+const groupedMovements = Object.groupBy(movements,movement => 
+  movements> 0 ?'Deposits':'Withdrews');
+  console.log(groupedMovements);
+
+
+  const xArray = new Array(7);
+  xArray.push('Hamilton');
+  xArray.push('Leclerc');
+  xArray.unshift('Verstappen');
+  xArray.fill(17,1,8);
+console.log(xArray);
+  
