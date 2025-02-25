@@ -201,3 +201,6 @@ btnSort.addEventListener('click', function (e) {
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
 });
+
+const dateText = new Date().toLocaleDateString('tr-TR');
+document.querySelector('.date').textContent= dateText;

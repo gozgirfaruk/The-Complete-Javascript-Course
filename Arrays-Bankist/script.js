@@ -208,5 +208,13 @@ const groupedMovements = Object.groupBy(movements,movement =>
   xArray.push('Leclerc');
   xArray.unshift('Verstappen');
   xArray.fill(17,1,8);
-console.log(xArray);
-  
+ console.log(xArray);
+ 
+ setTimeout(()=>console.log('Here is your pizza 🍕'),3000);
+
+//  setInterval(() => {
+//   console.log("Her 2 saniyede bir çalışıyorum!");
+// }, 2000);
+console.log(2360 % 60); 
+
+ 
