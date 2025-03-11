@@ -20,11 +20,85 @@ Person.prototype.calcAge = function(){
 };
 console.log(Person.prototype);
 jonas.calcAge();
-console.log(jonas.__proto__);
 
 Person.prototype.species = 'Homo Sapiens';
 console.log(matilda);
 console.log(jonas);
 
+console.log(jonas.hasOwnProperty('firstName'));
 
+console.log(jonas.__proto__);
+console.log(jonas.__proto__.__proto__);
+console.log(jonas.__proto__.__proto__.__proto__);
 
+console.dir(Person.prototype.constructor);
+
+const arr = [3,4,5,6,7,8,9,3,1]; // new Array ===[]
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+console.log(arr.__proto__.__proto__);
+
+Array.prototype.unique = function(){
+     return [...new Set(this)];
+};
+console.log(arr.unique());
+
+// class expression
+// const PersonCl = clas{}
+
+// class decleration
+class PersonCl {
+    constructor(firstName,birthYear){
+        this.firstName = firstName;
+        this.birthYear=birthYear;
+    }
+    calcAge(){
+        console.log(2025-this.birthYear);
+    }
+    get age(){
+        return 2085-this.birthYear;
+    }
+};
+const jessica =new PersonCl('Jessica',1996);
+console.log(jessica);
+jessica.calcAge();
+console.log(jessica.age);
+
+// GETTER AND SETTER
+const account={
+    owner:'Smith',
+    movements:[200,300,210,120],
+
+    get latest (){
+        return this.movements.slice(-1).pop();
+    },
+    set latest(mov){
+        this.movements.push(mov);
+    }
+};
+console.log(account.latest);
+account.latest=50;
+console.log(account.movements);
+
+const PersonProto = {
+    calcAge(){
+        console.log(2025-this.birthYear);
+    },
+
+    init(firstName,birthYear){
+        this.firstName=firstName;
+        this.birthYear=birthYear;
+    }
+};
+
+const steven = Object.create(PersonProto);
+console.log(steven);
+steven.name = 'Steven';
+steven.birthYear=2000;
+steven.calcAge();
+
+console.log(steven.__proto__);
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah',2001);
+sarah.calcAge();
