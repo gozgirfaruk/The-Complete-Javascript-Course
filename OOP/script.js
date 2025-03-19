@@ -102,3 +102,57 @@ console.log(steven.__proto__);
 const sarah = Object.create(PersonProto);
 sarah.init('Sarah',2001);
 sarah.calcAge();
+const Student = function(firstName, birthYear, course){
+    Person.call(this,firstName,birthYear);
+    this.course=course;
+}
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce=function(){
+    console.log(`My name is ${this.firstName} and I study ${this.course}`);
+}
+
+const mike = new Student('Mike',2020,'Computer Science');
+console.log(mike);
+mike.introduce();
+mike.calcAge();
+
+console.log(mike.__proto__);
+
+class StudentCl  extends PersonCl{
+    constructor(firstName,birthYear,course){
+        super(firstName,birthYear)
+        this.course=course;
+    }
+    introduce(){
+        console.log(`My name is ${this.firstName} and I study ${this.course}`);
+    }
+
+    calcAge(){
+        console.log(`I'm ${2025-this.birthYear} years old.`)
+    }
+}
+
+const martha = new StudentCl('Martha Jones',2012,'Computer Science');
+martha.introduce();
+martha.calcAge();
+
+class Account {
+    locale = navigator.language;
+    bank = 'Bankist';
+    // private
+    #movements = [];
+    constructor (owner, currency,pin){
+        this.owner=owner;
+        this.currency=currency;
+        this.pin=pin;
+    }
+}
+
+const acc1 = new Account('Gozegir','TL',1111);
+console.log(acc1);
+
+// acc1.movements.push(250);
+// acc1.movements.push(-70);
+console.log(acc1);
+
