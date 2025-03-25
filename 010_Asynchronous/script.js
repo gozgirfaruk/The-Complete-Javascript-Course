@@ -40,7 +40,7 @@ request.addEventListener('load' , function(){
 
 const getCountryData2 = function(country){
     fetch(`https://restcountries.com/v2/name/${country}`)
-    .then(response => response.json())
+    .then(response =>response.json())
     .then(data => {
         console.log(data);
         const [data2] = data;
@@ -60,7 +60,70 @@ const getCountryData2 = function(country){
     countriesContainer.style.opacity = 1;
     });
 };
-getCountryData2('turkey');
-getCountryData2('usa');
-getCountryData2('germany');
-getCountryData2('portugal');
+
+    getCountryData2('turkey');
+    getCountryData2('russia');
+    getCountryData2('new zealand');
+    getCountryData2('albania');
+
+
+   const lotteryPromise = new Promise(function(resolve,reject){
+    if(Math.random() >= 0.5){
+        resolve('You WIN!');
+    } else {
+        reject('You lost your money!');
+    } 
+  });
+
+  lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+
+  const wait = function(seconds){
+      return new Promise(function(resolve){
+          setTimeout(resolve, seconds * 1000);
+      });
+  };
+
+  wait(2).then(() => {
+      console.log('I waited for 2 seconds');
+      return wait(1);
+  }).then(() => {
+      console.log('I waited for 1 second');
+  });
+
+  Promise.resolve('abc').then(x => console.log(x));
+  Promise.reject(new Error('Problem!')).catch(x => console.error(x));
+
+
+  // Promisifying the Geolocation API
+  
+const getPosition = function(){
+    return new Promise(function(resolve, reject){
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+};
+getPosition().then(pos => console.log(pos));
+
+const whereAmI = function(){
+    getPosition().then(pos => {
+        const {latitude: lat, longitude: lng} = pos.coords;
+        return fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`);
+    })
+    .then(response =>{
+        if(!response.ok) throw new Error(`Problem with geocoding ${response.status}`);
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+        console.log(`You are in ${data.city}, ${data.countryName}`);
+    })
+    .catch(err => console.error(err));
+};
+
+btn.addEventListener('click', whereAmI);
+
+// Asenkron  : 1 hours 38 minutes
+// Modern JS : 3 hours 50 minutes
+// Forkify App: 8 hours 23 minutes
+// Setting Up : 0 hour 59 minutes
+
+// Total : 14 hours 50 hours
