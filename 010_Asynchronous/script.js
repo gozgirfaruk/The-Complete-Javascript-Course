@@ -120,10 +120,3 @@ const whereAmI = function(){
 };
 
 btn.addEventListener('click', whereAmI);
-
-// Asenkron  : 1 hours 38 minutes
-// Modern JS : 3 hours 50 minutes
-// Forkify App: 8 hours 23 minutes
-// Setting Up : 0 hour 59 minutes
-
-// Total : 14 hours 50 hours
