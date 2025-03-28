@@ -120,3 +120,17 @@ const whereAmI = function(){
 };
 
 btn.addEventListener('click', whereAmI);
+
+// Async / Await
+
+try {
+    const whereAmI2 =async function(country){
+        const res =  await fetch(`https://restcountries.com/v2/name/${country}`);
+        const data =  await res.json();
+        console.log(data);
+        console.log('Hi Brother');
+     };
+     whereAmI2('turkey');
+} catch (error) {
+    console.error(error);
+}
